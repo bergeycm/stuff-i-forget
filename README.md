@@ -10,11 +10,12 @@ Quick Links
 
 - [Perl](#Perl)
 - [R](#R)
-- [Unix/bash](#Unix/bash)
+- [Unix/bash](#Unix)
 - [CSS](#CSS)
 - [HPC](#HPC)
 - [git](#git)
 
+<a name="Perl"></a>
 Perl
 ----
 
@@ -69,6 +70,7 @@ Perl
     push(@{$hash{$key}}, $insert_val);
     ```
 
+<a name="R"></a>
 R
 -
 
@@ -101,6 +103,7 @@ R
     
     "The `~` is a spacing operator and `*` means juxtapose the contents to the left and right of the operator. In `bquote()`, anything wrapped in `.( )` will be looked up and replaced with the value of the named object; so `.(assay)` will be replaced."
 
+<a name="Unix"></a>
 Unix/bash
 ---------
 
@@ -169,6 +172,7 @@ Unix/bash
     sed -i '' -e '$a\' faulty_file.txt
     ```
 
+<a name="CSS"></a>
 CSS
 ---
 
@@ -180,6 +184,7 @@ CSS
     margin: 0px 25px 50px 75px;
     ```
 
+<a name="HPC"></a>
 HPC
 ---
 
@@ -242,6 +247,7 @@ HPC
     echo `wc -l ${PBS_NODEFILE} | cut -f1 -d" "`
     ```
 
+<a name="git"></a>
 git
 ---
 

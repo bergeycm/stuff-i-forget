@@ -9,9 +9,9 @@ Perl
 ----
 
 -   **For each file in a directory**
-
+    
     Capture a list of all files in a directory with the glob function:
-
+    
     ```perl
     @files = <*>;
     @txt_files = <my_dir/*.txt>;
@@ -22,7 +22,7 @@ Perl
     ```
 
 -   **Push items into array**
-
+    
     Why can I never remember the order of this? It's:
 
     ```perl
@@ -30,7 +30,7 @@ Perl
     ```
 
 -   **Split string into array of strings**
-
+    
     Another one I alway mess up:
 
     ```perl
@@ -38,39 +38,58 @@ Perl
     ```
 
 -   **Install a module with CPAN**
-
+    
     ```bash
     perl -MCPAN -e 'install X::Y'
     ```
 
 -   **Install a module with CPAN in a non-standard location**
-
+    
     ```
     o conf mbuildpl_arg "--install_base /path/to/perl-modules/"
     o conf makepl_arg "PREFIX=/path/to/perl-modules/"
     install X::Y
     ```
 
+-   **Quickly Create Hash of Arrays**
+    
+    Load the arrays in the hash without building the arrays, then dereferencing them into the hash. Found [here](http://www.perlmonks.org/?node_id=383463).
+    
+    ```perl
+    push(@{$hash{$key}}, $insert_val);
+    ```
+
 R
 -
 
 -   **Remove NAs from a vector**
-
+    
     ```r
     x[!is.na(x)]
     ```
 
 -   **Combine multiple plots in one graph**
-
+    
     ```r
     par(mfrow=c(num.rows, num.cols))
     ```
 
 -   **Generate the R code needed to reproduce an object**
-
+    
     ```r
     dput(head(iris))
     ```
+
+-   **Using Variables within `expression()`**
+    
+    See this [answer](http://stackoverflow.com/questions/15074127/use-expression-with-a-variable-r/15074283#15074283) on StackOverflow.
+    
+    ```r
+    alpha = 0.05
+    bquote("Representation in Low"~F[ST]~Regions~"(p"*""<=~.(alpha)*")")
+    ```
+    
+    "The `~` is a spacing operator and `*` means juxtapose the contents to the left and right of the operator. In `bquote()`, anything wrapped in `.( )` will be looked up and replaced with the value of the named object; so `.(assay)` will be replaced."
 
 Unix/bash
 ---------
@@ -91,6 +110,53 @@ Unix/bash
 
     ```bash
     diff <(ls /scratch/secret_project/) <(ls /archive/secret_project/)
+    ```
+
+-   **Keyboard Shortcuts**
+    
+    A subset of the ones found [here](http://www.computerhope.com/ushort.htm) and [here](http://unix.stackexchange.com/a/49).
+    
+    Combo     | Action
+    -------   | --------------------------------------------------------------------
+    `CTRL+S`  | Stops output on screen (XOFF).
+    `CTRL+Q`  | Turns stopped output back on (XON).
+    `CTRL+U`  | Erases (cuts) the complete line.
+    `CTRL+Y`  | Pastes line cut with CTRL+U.
+    `CTRL+W`  | Deletes the last word typed. `mv file1 file2` becomes `mv file1`.
+    `CTRL+L`  | Clears the screen, redrawing the current line.
+    `CTRL+G`  | Abandons the current line
+    
+-   **Recall Last Argument of Previous Command**
+    
+    Quickly grab the last command's argument(s). See this [thread](http://stackoverflow.com/questions/3371294/how-can-i-recall-the-argument-of-the-previous-bash-command):
+    
+    Variable     | Meaning
+    -------------|--------------------------------
+    `$_` or `!$` | Last argument (also `Alt + .`)
+    `!:1`, `!:2` | First, second argument, etc.
+    `!:3-4`      | Third and fourth commands 
+	`!:0`        | Previous command
+
+-   **Find Recently Modified Files**
+    
+    Find files modified less than 15 minutes ago:
+    
+    ```bash
+    find / -mmin -15
+    ```
+
+-   **Duplicate `STDOUT` to `STDERR`**
+    
+    ```bash
+    echo “Whatev” | tee /dev/stderr
+    ```
+
+-   **Add Newline to End of File**
+    
+    Adds `\n` at the end of the file if needed. Works on OSX.
+    
+    ```bash
+    sed -i '' -e '$a\' faulty_file.txt
     ```
 
 CSS
@@ -158,4 +224,62 @@ HPC
     All of this info was stolen from the [NYU HPC
     Wiki](https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub#Tutorial-Submittingajobusingqsub-arrayjob).
 
+    **PBS Environmental Variables**
+    
+    Good reference can be found [here](http://www.arl.hpc.mil/docs/pbsUserGuide.html). For instance, `$PBS_NODEFILE` is the path to a file containing a list of available nodes:
+    
+    ```bash
+    echo `wc -l ${PBS_NODEFILE} | cut -f1 -d" "`
+    ```
 
+git
+---
+
+-   **Save Progress without Commit**
+    
+    `git stash` ([see here](http://git-scm.com/book/en/v1/Git-Tools-Stashing)) creates a stack of unfinished changes so you can reapply them later when you're ready to keep working on the half-completed step.    
+
+-   **Undo the Last Commit**
+    
+    Undo the last commit and move all changes back to stage. (Must be done before push.)
+    
+    ```bash
+    git reset --soft HEAD^
+    ```
+
+-   **Undo the Last Commit and REMOVE Changes**
+    
+    Undo the last commit and REMOVE all changes. (Must be done before push.)
+    
+    ```bash
+    git reset --hard HEAD^
+    ```
+
+-   **Undo Multiple Commits and REMOVE Changes**
+    
+    Undo the last two commits and REMOVE all changes. (Must be done before push.)
+    
+    ```bash
+    git reset --hard HEAD^^
+    ```
+
+-   **Amend Last Commit**
+    
+    Amend the last commit. (Must be done before push.) Optional commit message will overwrite the original commit message.
+    
+    ```bash
+    git add whatev.txt
+    git commit --amend -m "Add foo.txt and modify whatev.txt"
+    ```
+
+-  **Reset Unstaged Changes**
+    
+    ```bash
+    git checkout file_to_revert.txt
+    ```
+
+-  **Intelligently Show LaTeX Changes**
+    
+    ```bash
+    git --no-pager diff --color-words manuscript.tex
+    ```

@@ -5,6 +5,16 @@ I need an internet connection to program well because I'm constantly looking up 
 
 It's really a letter of advice from Past Christina to Future Christina.
 
+Quick Links
+-----------
+
+- [Perl](#Perl)
+- [R](#R)
+- [Unix/bash](#Unix/bash)
+- [CSS](#CSS)
+- [HPC](#HPC)
+- [git](#git)
+
 Perl
 ----
 
@@ -224,7 +234,7 @@ HPC
     All of this info was stolen from the [NYU HPC
     Wiki](https://wikis.nyu.edu/display/NYUHPC/Tutorial+-+Submitting+a+job+using+qsub#Tutorial-Submittingajobusingqsub-arrayjob).
 
-    **PBS Environmental Variables**
+-   **PBS Environmental Variables**
     
     Good reference can be found [here](http://www.arl.hpc.mil/docs/pbsUserGuide.html). For instance, `$PBS_NODEFILE` is the path to a file containing a list of available nodes:
     

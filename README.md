@@ -148,7 +148,7 @@ HPC
     $ qsub -t 0-10:3 myjob.pbs
     ```
 
-    which would run with 0, 3, 6, and 9 as PBS\_ARRAYID. A handy trick
+    which would run with 0, 3, 6, and 9 as `PBS_ARRAYID`. A handy trick
     for using array jobs to pull input file names out of a text file is:
 
     ```bash

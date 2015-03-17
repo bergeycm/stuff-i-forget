@@ -103,6 +103,17 @@ R
     
     "The `~` is a spacing operator and `*` means juxtapose the contents to the left and right of the operator. In `bquote()`, anything wrapped in `.( )` will be looked up and replaced with the value of the named object; so `.(assay)` will be replaced."
 
+-   **Create Function with Range of Possible Parameters and Default**
+    
+    Description can be found [here](http://stackoverflow.com/a/4684604). In this function, age can only be adult or subadult and defaults to adult:
+    
+    ```my.function = function(name, age = c("adult", "subadult")) {
+        ## evaluate choices
+        age = match.arg(age)
+        print(age)  # Defaults to adult
+    }
+    ```
+
 <a name="Unix"></a>
 Unix/bash
 ---------

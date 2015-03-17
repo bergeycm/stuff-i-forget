@@ -107,7 +107,8 @@ R
     
     Description can be found [here](http://stackoverflow.com/a/4684604). In this function, age can only be adult or subadult and defaults to adult:
     
-    ```my.function = function(name, age = c("adult", "subadult")) {
+    ```r
+    my.function = function(name, age = c("adult", "subadult")) {
         ## evaluate choices
         age = match.arg(age)
         print(age)  # Defaults to adult

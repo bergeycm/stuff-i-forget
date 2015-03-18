@@ -159,8 +159,9 @@ Unix/bash
     -------------|--------------------------------
     `$_` or `!$` | Last argument (also `Alt + .`)
     `!:1`, `!:2` | First, second argument, etc.
-    `!:3-4`      | Third and fourth commands 
+    `!:3-4`      | Third and fourth arguments 
 	`!:0`        | Previous command
+	`!*`         | All arguments to last command
 
 -   **Find Recently Modified Files**
     
@@ -182,6 +183,28 @@ Unix/bash
     
     ```bash
     sed -i '' -e '$a\' faulty_file.txt
+    ```
+
+-   **Curly Bracket Expansion**
+    
+    Anything in braces expands:
+    
+    ```bash
+    cp important_file.txt{,_backup}
+    rm really/long/path/{alpha,beta}
+    touch {a..k}.txt
+    rm section-{1..9}.txt
+    ```
+
+-   **Circumflex Command Editing**
+    
+    Not sure what the name of this is, but useful for typos and changing parameters in long commands. Note that only first instance is changed.
+    
+    ```bash
+    head ~/Desktop/tmp_line_counts.txt
+    # ...
+    ^Desktop^Documents
+    # Runs "head ~/Documents/tmp_line_counts.txt "
     ```
 
 <a name="CSS"></a>

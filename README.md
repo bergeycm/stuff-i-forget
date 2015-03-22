@@ -137,6 +137,26 @@ Unix/bash
     diff <(ls /scratch/secret_project/) <(ls /archive/secret_project/)
     ```
 
+-   **List files and sort numbers "naturally"**
+    
+    [Natural sort](http://www.naturalordersort.org/) means sorted like this:
+    
+        chr1.fa
+        chr2.fa
+        chr10.fa
+    
+    instead of this:
+    
+        chr1.fa
+        chr10.fa
+        chr2.fa
+    
+    You can do this with `ls -v`. Using this natural sort with `xargs` is super handy for `cat`'ing together chromosomes in order:
+    
+    ```bash
+    ls -v chr*.fa | xargs cat > genome.fa
+    ```
+
 -   **Keyboard Shortcuts**
     
     A subset of the ones found [here](http://www.computerhope.com/ushort.htm) and [here](http://unix.stackexchange.com/a/49).

@@ -191,6 +191,26 @@ Unix/bash
     find / -mmin -15
     ```
 
+-   **Find and Delete Files Older than x Days**
+    
+    You can see files older than 20 days with:
+    
+    ```bash
+    find results/bgc/2000loci/* -mtime +20
+    ```
+    
+    If you want to do something to those files, add `-exec`, the command, and then `{} \;`. For instance, this applies `ls -lh` to files older than 20 days:
+    
+    ```bash
+    find results/bgc/2000loci/* -mtime +20 -exec ls -lh {} \;
+    ```
+    
+    And this deletes them:
+    
+    ```bash
+    find results/bgc/2000loci/* -mtime +20 -exec rm {} \;
+    ```
+
 -   **Duplicate `STDOUT` to `STDERR`**
     
     ```bash
